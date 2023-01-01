@@ -3,7 +3,6 @@ import Draggable from "react-draggable";
 import { useXarrow } from "react-xarrows";
 import ReactMarkdown from "react-markdown";
 import Input from "./Input";
-import {htmlTagNames} from "html-tag-names";
 
 export default function Rectangle({ id, defaultPosition, text }) {
   const [isHover, setIsHover] = useState(false);
