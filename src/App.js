@@ -1,8 +1,9 @@
 import React, { createElement } from "react";
-import "./styles.css";
+import {ErrorBoundary} from "react-error-boundary";
 import Board from "./Board";
 import Rectangle from "./Rectangle";
 import Arrow from "./Arrow";
+import ErrorFallback from "./ErrorFallback";
 
 const data = {
   rectangles: [
@@ -28,14 +29,24 @@ const data = {
 };
 
 export default function App() {
+  const appStyle = {
+    height: "100vh",
+    fontFamily: "'Avenir Next', sans-serif",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+  
   return (
-    <div className="App">
+    <div className="App" style={appStyle}>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Board>
         {data.rectangles.map((rectangle) =>
           createElement(Rectangle, { ...rectangle })
         )}
         {data.arrows.map((arrow) => createElement(Arrow, { ...arrow }))}
       </Board>
+      </ErrorBoundary>
     </div>
   );
 }
