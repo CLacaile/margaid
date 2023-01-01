@@ -7,11 +7,13 @@ export default function Board({ children }) {
   useEffect(() => {
     const board = boardRef.current;
     const width = window.innerWidth - (window.innerWidth % 30);
-    board.style.width = `${width}px`;
+    const height = window.innerHeight - (window.innerHeight % 30);
+    board.style.width = `${width+1}px`;
+    board.style.height = `${height+1}px`;
   }, [])
   
   const boardStyle = {
-    height: "100%",
+    width: width,
     backgroundSize: "30px 30px",
     backgroundImage: 
       "linear-gradient(to right, lightblue 1px, transparent 1px)," +
