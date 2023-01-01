@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import Draggable from "react-draggable";
 import { useXarrow } from "react-xarrows";
 import ReactMarkdown from "react-markdown";
-import Input from "./Input";
+import Editor from "./Editor";
 
 export default function Rectangle({ id, defaultPosition, text }) {
   const [isHover, setIsHover] = useState(false);
-  const [isInputHidden, setIsInputHidden] = useState(true);
+  const [isEditorHidden, setIsEditorHidden] = useState(true);
   const updateXarrow = useXarrow();
   
   const rectStyle = {
@@ -35,7 +35,7 @@ export default function Rectangle({ id, defaultPosition, text }) {
    };
    
    const handleClick = () => {
-     setIsInputHidden(!isInputHidden);
+     setIsEditorHidden(!isEditorHidden);
    }
   
   return (
@@ -58,7 +58,7 @@ export default function Rectangle({ id, defaultPosition, text }) {
           <ReactMarkdown children={text} components={componentsMapping} allowedElements={['h1']}/>
         </div>
       </Draggable>
-      <Input text={text} isHidden={isInputHidden}/>
+      <Editor text={text} isHidden={isEditorHidden}/>
     </>
   );
 }
