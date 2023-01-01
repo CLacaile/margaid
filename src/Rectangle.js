@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Draggable from "react-draggable";
 import { useXarrow } from "react-xarrows";
+import ReactMarkdown from "react-markdown";
 import Input from "./Input";
 
 export default function Rectangle({ id, defaultPosition, text }) {
@@ -17,8 +18,20 @@ export default function Rectangle({ id, defaultPosition, text }) {
     opacity: "80%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    padding: "5px"
   }
+  
+  // Create an empty lambda function that does nothing
+  const emptyLambda = () => {};
+
+  // Create an object that maps the 'h1' key to the string 'h6'
+  // and all other keys to the emptyLambda function
+  const allowedMdComponents = {
+    h1: 'h6',
+    p: emptyLambda
+  };
+
   
   const handleMouseEnter = () => {
       setIsHover(true);
@@ -49,7 +62,7 @@ export default function Rectangle({ id, defaultPosition, text }) {
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
         >
-          {text}
+          <ReactMarkdown children={text} components={allowedMdComponents}/>
         </div>
       </Draggable>
       <Input text={text} isHidden={isInputHidden}/>
