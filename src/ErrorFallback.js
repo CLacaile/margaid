@@ -1,9 +1,14 @@
 export default function ErrorFallback({ error }) {
-  console.log(error);
+  const errorStyle = {
+    width: '80%',
+    backgroundColor: '#FFBBBB',
+    padding: "10px",
+    borderRadius: "5px"
+  }
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.toString()}</pre>
+    <div role="alert" style={errorStyle}>
+      <h4>❌ Something went wrong:</h4>
+      <code>{error.toString()}</code>
     </div>
   );
 }
