@@ -1,13 +1,5 @@
 .App {
   height: 100vh;
   margin: 0;
-  font-family: sans-serif;
-}
-
-.board {
-  height: 800px;
-  width: 600px;
-  background-size: 30px 30px;
-  background-image: linear-gradient(to right, lightblue 1px, transparent 1px),
-    linear-gradient(to bottom, lightblue 1px, transparent 1px);
+  font-family: "Avenir Next", sans-serif;
 }
