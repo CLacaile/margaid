@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import ReactMarkdown from "react-markdown";
 
 export default function Input({text, isHidden}) {
+    const inputRef = useRef(null);
+  
+  useEffect(() => {
+    const input = inputRef.current;
+    const width = window.innerWidth - (window.innerWidth % 30);
+    input.style.width = `${width}px`;
+  }, [])
+  
     const inputStyle = {
         width: "100%",
         height: "30%",
@@ -16,11 +24,18 @@ export default function Input({text, isHidden}) {
         visibility: isHidden ? "hidden" : "visible",
         transition: "opacity .2s ease-in-out"
     }
+    
+    const closeBtnStyle = {
+        position: "absolute",
+        top: 0,
+        right: 10
+    }
+    
     return (
-        <div className="input" style={inputStyle}>
+        <div ref={inputRef} className="input" style={inputStyle}>
+            <button className="closeBtn" style={closeBtnStyle}>X</button>
             <ReactMarkdown children={text}>
             </ReactMarkdown>
-            {text}
         </div>
     )
 }
