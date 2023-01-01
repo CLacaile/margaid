@@ -13,7 +13,6 @@ export default function Board({ children }) {
   }, [])
   
   const boardStyle = {
-    width: width,
     backgroundSize: "30px 30px",
     backgroundImage: 
       "linear-gradient(to right, lightblue 1px, transparent 1px)," +
